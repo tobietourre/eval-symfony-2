@@ -3,6 +3,7 @@
 {% block body %}
 {{ include('header.html.twig')  }}
 {{ include('menu.html.twig')  }}
-{{ include('content.html.twig')  }}
+{% block content%}
+{% endblock content %}
 {{ include('footer.html.twig')  }}
-{% endblock %}
+{% endblock body %}

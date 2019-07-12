@@ -18,7 +18,8 @@ class BlogPostFixtures extends Fixture
         for($i = 0; $i < 20 ; $i++){
             $blogPost = new BlogPost();
             $blogPost->setTitle('title' . $i);
-            $blogPost->setSlug('slug ' . $i);
+            $blogPost->setSlug('slug' . $i);
+            $blogPost->setContent('Le contenu est contenu dans le contenant.');
             $blogPost->setDate('200' . $i);
             $blogPost->setCategory('category' . $i);
             $blogPost->setFeatured($i%2 === 0 ? true : false);
