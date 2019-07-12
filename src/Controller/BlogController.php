@@ -25,11 +25,13 @@ class BlogController extends AbstractController
     }
 
     /**
+     * Implémenté uniquement la recherche par ID car avec les 3 arguments il y avait problème
+     * Mes essais pour implémenter les 2 autres routes sont commentés
      * @Route("/blog/{id}", name="showById")
      * @Route("/blog/{slug}", name="showBySlug", requirements={"slug"="[a-zA-Z0-9-_]*"})
      * @Route("/blog/{date}/{slug}", name="showByDateAndSlug", requirements={"date"="d{4}"})
      */
-    public function showPostAction($id, $slug, $date)
+    public function showPostAction($id)
     {
         /*if(! is_null($id)) {
             $blogPost = $this->getDoctrine()
@@ -48,9 +50,7 @@ class BlogController extends AbstractController
 
        $blogPost = $this->getDoctrine()
             ->getRepository(BlogPost::class)
-            ->findOneBy(["id" => $id,
-                "slug" => $slug,
-                "date" => $date]);
+            ->findOneBy(["id" => $id]);
 
         return($this->render('blogpost/show.html.twig', ["blogpost" => $blogPost]));
     }

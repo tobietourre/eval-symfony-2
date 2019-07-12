@@ -74,4 +74,18 @@ class AdminController extends AbstractController
         }
         return $this->render('admin/update.html.twig', ['form' => $form->createView(),   ]);
     }
+
+    /**
+     * @Route("/{id}", name="deletePost", methods={"DELETE"})
+     */
+    public function delete(Request $request, BlogPost $post): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($post);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('listPosts');
+    }
 }
