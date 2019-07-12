@@ -21,7 +21,7 @@ class BlogPostFixtures extends Fixture
             $blogPost->setSlug('slug' . $i);
             $blogPost->setContent('Le contenu est contenu dans le contenant.');
             $blogPost->setDate('200' . $i);
-            $blogPost->setCategory('category' . $i);
+            $blogPost->setCategory($this->getReference(AppFixtures::CATEGORY));
             $blogPost->setFeatured($i%2 === 0 ? true : false);
             $manager->persist($blogPost);
         }

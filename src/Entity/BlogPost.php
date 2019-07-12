@@ -37,14 +37,14 @@ class BlogPost
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $category;
-
-    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $featured;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="posts")
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -119,6 +119,18 @@ class BlogPost
     public function setFeatured(?bool $featured): self
     {
         $this->featured = $featured;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Category
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Category $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
